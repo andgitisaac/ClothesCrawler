@@ -1,3 +1,4 @@
+import os
 import requests
 import urllib.request
 import random
@@ -40,11 +41,12 @@ def requests_headers():
 def download_image(url, filename, file_in, lineNo):
     file_out = filename + '.jpg'
     log_out = file_in + '.log'
+    cwd = os.getcwd()
     hdr = requests_headers()
 
     try:
         raw = requests.get(url, headers=hdr)
-        with open(file_out, 'wb') as image:
+        with open(os.path.join(os.getcwd(), file_out), 'wb') as image:
             image.write(raw.content)
         time.sleep(0.5) # Maybe wait for a longer time until connecting to the url?
         return False
