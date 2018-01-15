@@ -46,7 +46,7 @@ def download_image(url, filename, file_in, lineNo):
 
     try:
         raw = requests.get(url, headers=hdr)
-        with open(os.path.join(os.getcwd(), file_out), 'wb') as image:
+        with open(os.path.join(os.getcwd(), 'PHOTO', file_out), 'wb') as image:
             image.write(raw.content)
         time.sleep(0.5) # Maybe wait for a longer time until connecting to the url?
         return False
