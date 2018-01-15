@@ -77,10 +77,10 @@ if __name__ == '__main__':
             print("Exception Raise at line {}. Halt for 1800 secs".format(lineNo))
             time.sleep(1800)
         elif (lineNo % 100) == 0 and lineNo != 0: # Sleep for an hour for every 100 photos
-            print("At line {}. Halt for 3600 secs".format(lineNo))
-            time.sleep(3600)
+            print("At line {}. Halt for 1800 secs".format(lineNo))
+            time.sleep(1800)
         elif (lineNo % 10) == 0 and lineNo != 0: # Sleep for a while for every 10 photos
-            var = random.randrange(60, 120)
+            var = random.randrange(30, 60)
             print("At line {}. Halt for {} secs".format(lineNo, var))
             time.sleep(var)
         lineNo += 1        
