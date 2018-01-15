@@ -54,7 +54,7 @@ if __name__ == '__main__':
         suffix = [''] + ['/' + str(i) for i in range(2, pagecount+1) ]
         identityCount, productCount = 0, 0
         for i in range(pagecount):
-            url = base_url[iter] + suffix[i]'NETwomen_urls'
+            url = base_url[iter] + suffix[i]
             page = get_web_page(url)
             soup = bs(page, 'html.parser')
             products_url = get_product_url(soup)
