@@ -34,7 +34,7 @@ def download_image(url_list, count):
         urlretrieve(url, filename)
 
 def collect_urls(url_list, filename, PID, IID):
-    with open(filename, 'w') as file:
+    with open(filename, 'a') as file:
         for url in url_list:
             prefix = 'PID' + str(PID).zfill(6) + '_IID' + str(IID).zfill(6)
             file.write(prefix)
