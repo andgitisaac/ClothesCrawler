@@ -33,19 +33,22 @@ def download_image(url_list, count):
         install_opener(opener)
         urlretrieve(url, filename)
 
-def collect_urls(url_list, filename):
-    with open(filename, 'a') as file:
+def collect_urls(url_list, filename, PID, IID):
+    with open(filename, 'w') as file:
         for url in url_list:
+            prefix = 'PID' + str(PID).zfill(6) + '_IID' + str(IID).zfill(6)
+            file.write(prefix)
+            file.write(' ')
             file.write(url)
             file.write('\n')
-        file.write('\n')
+            IID += 1
 
 if __name__ == '__main__':    
-    pagecount = 100
+    pagecount = 60  # Women:60, Men:15
     url_filename = 'NETwomen_urls'
     base_url = 'https://www.net-fashion.net/category/998'
     suffix = [''] + ['/' + str(i) for i in range(2, pagecount+1) ]
-    filecount = 1
+    identityCount, productCount = 0, 0
     for i in range(pagecount):
         url = base_url + suffix[i]
         page = get_web_page(url)
@@ -56,9 +59,8 @@ if __name__ == '__main__':
             product_page = get_web_page(product_url)
             product_soup = bs(product_page, 'html.parser')
             pics_url = get_pic_url(product_soup)        
-            collect_urls(pics_url, url_filename)
-            # download_image(pics_url, filecount)            
-            filecount += 1
+            collect_urls(pics_url, url_filename, productCount, identityCount)            
+            productCount += 1
 
 
         print("page: ", i)
