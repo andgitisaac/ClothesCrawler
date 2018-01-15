@@ -44,34 +44,29 @@ def collect_urls(url_list, filename, PID, IID):
             IID += 1
 
 if __name__ == '__main__':    
-    pagecount = 60  # Women:60, Men:15
-    url_filename = 'NETwomen_urls'
-    base_url = 'https://www.net-fashion.net/category/998'
-    suffix = [''] + ['/' + str(i) for i in range(2, pagecount+1) ]
-    identityCount, productCount = 0, 0
-    for i in range(pagecount):
-        url = base_url + suffix[i]
-        page = get_web_page(url)
-        soup = bs(page, 'html.parser')
-        products_url = get_product_url(soup)
-        
-        for product_url in products_url:
-            product_page = get_web_page(product_url)
-            product_soup = bs(product_page, 'html.parser')
-            pics_url = get_pic_url(product_soup)        
-            collect_urls(pics_url, url_filename, productCount, identityCount)            
-            productCount += 1
+    page = [60, 15]  # Women:60, Men:15
+    url_filename = ['NETwomen_urls', 'NETmen_urls']
+    base_url = ['https://www.net-fashion.net/category/998', 'https://www.net-fashion.net/category/999']
+    
+    for iter in range(2):
+        pagecount = page[iter]
+        filename = url_filename[iter]
+        suffix = [''] + ['/' + str(i) for i in range(2, pagecount+1) ]
+        identityCount, productCount = 0, 0
+        for i in range(pagecount):
+            url = base_url[iter] + suffix[i]'NETwomen_urls'
+            page = get_web_page(url)
+            soup = bs(page, 'html.parser')
+            products_url = get_product_url(soup)
+            
+            for product_url in products_url:
+                product_page = get_web_page(product_url)
+                product_soup = bs(product_page, 'html.parser')
+                pics_url = get_pic_url(product_soup)        
+                collect_urls(pics_url, filename, productCount, identityCount)            
+                productCount += 1
 
 
-        print("page: ", i)
-
-    # url = base_url + suffix[0]
-    # page = get_web_page(url)
-    # soup = bs(page, 'html.parser')
-    # products_url = get_product_url(soup)
-
-    # product_page = get_web_page(products_url[0])
-    # product_soup = bs(product_page, 'html.parser')
-    # pics_url = get_pic_url(product_soup)
+            print("page: ", i)
 
 
