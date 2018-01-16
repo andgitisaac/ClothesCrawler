@@ -37,10 +37,10 @@ if __name__ == '__main__':
 
     f = open(file_in, 'r')
     for line in f:
-        if lineNo < 1653:
+        if lineNo < 1906:
             lineNo += 1
             continue
-        # Since last time it fails at line 1653
+        # Since last time it fails at line 1906
 
         file_out, url = line.strip('\n').split()
             
@@ -56,7 +56,7 @@ if __name__ == '__main__':
             var = random.randrange(30, 60)
             print("At line {}. Halt for {} secs".format(lineNo, var))
             time.sleep(var)
-        # lineNo += 1
+        lineNo += 1
     f.close()
             
         
