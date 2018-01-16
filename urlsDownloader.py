@@ -37,6 +37,11 @@ if __name__ == '__main__':
 
     f = open(file_in, 'r')
     for line in f:
+        if lineNo < 1653:
+            lineNo += 1
+            continue
+        # Since last time it fails at line 1653
+
         file_out, url = line.strip('\n').split()
             
         exceptionRaise = download_image(url, file_out, file_in, lineNo)
@@ -46,12 +51,12 @@ if __name__ == '__main__':
             time.sleep(1800)
         elif (lineNo % 100) == 0 and lineNo != 0: # Sleep for an hour for every 100 photos
             print("At line {}. Halt for 1800 secs".format(lineNo))
-            time.sleep(1800)
+            time.sleep(1200)
         elif (lineNo % 10) == 0 and lineNo != 0: # Sleep for a while for every 10 photos
             var = random.randrange(30, 60)
             print("At line {}. Halt for {} secs".format(lineNo, var))
             time.sleep(var)
-        lineNo += 1        
+        # lineNo += 1
     f.close()
             
         
