@@ -32,7 +32,7 @@ def download_image(url, filename, file_in, lineNo):
         return True
 
 if __name__ == '__main__':
-    file_in = 'life8causual_urls'
+    file_in = 'life8_causual_urls'
     lineNo = 0
 
     f = open(file_in, 'r')
