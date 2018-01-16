@@ -24,7 +24,7 @@ def get_pic_url(soup, currentColorCount):
     totalColorCount = len(diffColor)
    
     json_table = diffColor[currentColorCount]['Photos']
-    urls = [ resolution['P2'] for resolution in json_table ]  # 'P1': height 100, 'P2': height 600, 'P3': height 1920
+    urls = [ resolution['P2'] for resolution in json_table if (resolution['P2'] != '') ]  # 'P1': height 100, 'P2': height 600, 'P3': height 1920
 
     if (currentColorCount + 1) == totalColorCount:
         return True, urls # Get all different colors
