@@ -14,7 +14,7 @@ def download_image(url, filename, file_in, lineNo):
 
     try:
         raw = requests.get(url, headers=hdr)
-        with open(os.path.join(os.getcwd(), 'PHOTO_life8_2', file_out), 'wb') as image:
+        with open(os.path.join(os.getcwd(), 'PHOTO_NET_2', file_out), 'wb') as image:
             image.write(raw.content)
         time.sleep(0.5) # Maybe wait for a longer time until connecting to the url?
         return False
@@ -32,7 +32,7 @@ def download_image(url, filename, file_in, lineNo):
         return True
 
 if __name__ == '__main__':
-    file_in = 'life8_formal_urls'
+    file_in = 'NETmen_urls'
     lineNo = 0
 
     f = open(file_in, 'r')
